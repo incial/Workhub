@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { AnimateIn } from './AnimateIn'
 import { FeatureCard } from './FeatureCard'
 import { SectionLabel } from './SectionLabel'
@@ -51,29 +50,27 @@ function FeatureMarquee({ items }: { items: typeof FEATURES }) {
 }
 
 export function FeaturesSection() {
-  const [paused, setPaused] = useState(false)
-
   return (
     <section
       id="features"
       className="overflow-hidden bg-white py-20 lg:py-24"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
     >
-      <div className="mx-auto max-w-[1152px] px-6 lg:px-[82px]">
+      <div className="mx-auto max-w-full lg:max-w-[1152px] px-6 lg:px-[82px]">
         <AnimateIn className="mb-[50px] flex flex-col items-center gap-[15px] text-center">
           <SectionLabel>Features</SectionLabel>
+
           <h2 className="m-0 text-[48px] font-bold leading-[72px] text-black">
             Everything You Need
           </h2>
-          <p className="m-0 max-w-[672px] text-xl italic leading-[30px] text-workhub-muted">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore
+
+          <p className="m-0 max-w-full lg:max-w-[672px] text-xl italic leading-[30px] text-workhub-muted">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore
           </p>
         </AnimateIn>
       </div>
 
-      <div className={`mt-4 ${paused ? 'feature-marquee-paused' : ''}`}>
+      <div className="mt-4">
         <FeatureMarquee items={FEATURES} />
       </div>
     </section>

@@ -1,3 +1,4 @@
+<section id="why-workhub"></section>
 import { motion } from 'framer-motion'
 import {
   CheckCircleIcon,
@@ -96,14 +97,9 @@ export function WhyWorkHubSection() {
       viewport={{ once: false, amount: 0.2 }}
       variants={sectionVariants}
     >
-      <div className="mx-auto max-w-[1440px]">
+      <div className="mx-auto max-w-full lg:max-w-[1440px]">
         <div className="grid gap-16 lg:grid-cols-[534px_1fr] lg:gap-[140px]">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, amount: 0.3 }}
-            variants={mainRevealVariants}
-          >
+          <motion.div variants={mainRevealVariants} initial="hidden" animate="visible">
             <SectionLabel align="left">Why WorkHub</SectionLabel>
             <h2 className="mt-5 mb-5 text-[48px] font-bold leading-[60px] text-black">
               Designed for Real Businesses
@@ -138,7 +134,7 @@ export function WhyWorkHubSection() {
         </div>
 
           <motion.div
-            className="mt-20 grid gap-10 sm:grid-cols-2 xl:grid-cols-4"
+            className="mt-20 grid grid-cols-2 gap-10 sm:grid-cols-2 xl:grid-cols-4"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.2 }}

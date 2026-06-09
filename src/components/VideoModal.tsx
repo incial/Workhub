@@ -51,7 +51,7 @@ export function VideoModal({ isOpen, onClose, videoSrc }: VideoModalProps) {
             exit={{ opacity: 0 }}
           >
             <motion.div
-              className="relative w-full max-w-3xl"
+              className="relative w-full max-w-full lg:max-w-3xl"
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
@@ -60,7 +60,7 @@ export function VideoModal({ isOpen, onClose, videoSrc }: VideoModalProps) {
               <button
                 type="button"
                 onClick={onClose}
-                className="absolute -top-12 right-0 z-10 flex h-10 w-10 items-center justify-center text-white hover:opacity-70 transition-opacity"
+                className="absolute top-4 right-4 z-10 flex h-10 w-10 items-center justify-center text-white hover:opacity-70 transition-opacity lg:top-auto lg:-top-12 lg:right-0"
                 aria-label="Close video"
               >
                 <svg

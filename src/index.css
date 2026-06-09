@@ -31,6 +31,7 @@ body {
   background: var(--color-workhub-black);
   color: var(--color-workhub-white);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 #root {
@@ -69,7 +70,7 @@ body {
 }
 
 .feature-marquee-single .feature-marquee-inner {
-  animation: featureScrollContinuous 45s linear infinite;
+  animation: featureScrollContinuous 8s linear infinite;
 }
 
 .feature-marquee-paused .feature-marquee-inner {
@@ -92,7 +93,7 @@ body {
 }
 
 .more-marquee .more-marquee-inner {
-  animation: featureScrollContinuous 45s linear infinite;
+  animation: featureScrollContinuous 20s linear infinite;
 }
 
 .more-marquee-paused .more-marquee-inner {
@@ -169,7 +170,7 @@ body {
   display: flex;
   width: max-content;
   gap: 60px;
-  animation: reviewsMarquee 45s linear infinite;
+  animation: reviewsMarquee 35s linear infinite;
 }
 
 .reviews-marquee-paused .reviews-marquee-inner {

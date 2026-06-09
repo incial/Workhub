@@ -8,6 +8,7 @@ type ButtonProps = {
   className?: string
   size?: 'sm' | 'md' | 'lg'
   onClick?: () => void
+  type?: 'button' | 'submit' | 'reset'
 }
 
 const sizeClasses = {
@@ -28,10 +29,11 @@ export function Button({
   className = '',
   size = 'sm',
   onClick,
+  type = 'button',
 }: ButtonProps) {
   return (
     <button
-      type="button"
+      type={type}
       onClick={onClick}
       className={`inline-flex items-center justify-center rounded-[25px] font-normal italic transition-opacity hover:opacity-90 ${sizeClasses[size]} ${variantClasses[variant]} ${className}`}
     >

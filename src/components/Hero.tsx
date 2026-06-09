@@ -1,4 +1,5 @@
-import { useState } from 'react'
+<section id="home"></section>
+import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from './Button'
 import { Header } from './Header'
@@ -42,12 +43,38 @@ const navVariants = {
 
 export function Hero() {
   const [isVideoOpen, setIsVideoOpen] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    const enableAudio = () => {
+      if (videoRef.current) {
+        videoRef.current.muted = false
+        videoRef.current.volume = 1
+
+        videoRef.current.play().catch(() => {
+          console.log('Audio playback blocked by browser')
+        })
+      }
+
+      document.removeEventListener('click', enableAudio)
+    }
+
+    document.addEventListener('click', enableAudio)
+
+    return () => {
+      document.removeEventListener('click', enableAudio)
+    }
+  }, [])
 
   return (
     <>
-      <section className="relative min-h-[981px] overflow-hidden bg-black">
+      <section
+        id="home"
+        className="relative min-h-[640px] lg:min-h-[981px] overflow-hidden bg-black"
+      >
         {/* Background Video */}
         <video
+          ref={videoRef}
           autoPlay
           muted
           loop
@@ -59,17 +86,31 @@ export function Hero() {
           <source src={heroVideo} type="video/mp4" />
         </video>
 
-        {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-workhub-overlay" aria-hidden />
+        {/* Overlay */}
+        <div
+          className="absolute inset-0 bg-workhub-overlay"
+          aria-hidden
+        />
 
         {/* Content */}
-        <div className="relative z-10 mx-auto max-w-[1440px]">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} variants={navVariants}>
+        <div className="relative z-10 mx-auto max-w-full lg:max-w-[1440px]">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.2 }}
+            variants={navVariants}
+          >
             <Header variant="light" />
           </motion.div>
 
-          <div className="flex min-h-[820px] flex-col justify-end px-6 pb-16 pt-24 lg:px-[140px] lg:pb-[120px]">
-            <motion.div className="flex flex-col gap-8 lg:max-w-[580px]" initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} variants={containerVariants}>
+          <div className="flex min-h-[560px] lg:min-h-[820px] flex-col justify-end px-6 pb-16 pt-24 lg:px-[140px] lg:pb-[120px]">
+              <motion.div
+              className="flex flex-col gap-8 max-w-full lg:max-w-[580px]"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.2 }}
+              variants={containerVariants}
+            >
               <motion.h1
                 className="m-0 text-[48px] font-bold leading-tight text-white"
                 variants={itemVariants}
@@ -86,15 +127,29 @@ export function Hero() {
               </motion.p>
             </motion.div>
 
-            <motion.div className="mt-12 flex flex-wrap items-center gap-4 lg:absolute lg:bottom-[120px] lg:right-[140px] lg:mt-0" initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} variants={itemVariants}>
+            <motion.div
+              className="mt-12 flex flex-wrap items-center gap-4 lg:absolute lg:bottom-[120px] lg:right-[140px] lg:mt-0"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.2 }}
+              variants={itemVariants}
+            >
               <Button
-                variant="outline"
-                className="!px-3 !py-3.5 btn-pulse"
-                onClick={() => {}}
-              >
-                Try it Out
-              </Button>
+  variant="outline"
+  className="!px-3 !py-3.5 btn-pulse"
+  onClick={() => {
+    const section = document.getElementById('contact-section')
 
+    if (section) {
+      section.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      })
+    }
+  }}
+>
+  Try it Out
+</Button>
               <Button
                 variant="outline"
                 className="!px-3 !py-3.5"

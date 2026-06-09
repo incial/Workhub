@@ -1,4 +1,4 @@
-import { Button } from './Button'
+
 import { motion } from 'framer-motion'
 
 export function CtaSection() {
@@ -15,9 +15,9 @@ export function CtaSection() {
   }
 
   return (
-    <section className="bg-white px-6 py-24 lg:px-[364px] lg:py-32 flex items-center">
+    <section className="bg-white px-6 py-6 lg:px-[364px] lg:py-10 flex items-center">
       <motion.div
-        className="mx-auto flex max-w-[589px] flex-col items-center gap-[50px] text-center"
+        className="mx-auto flex max-w-full lg:max-w-[589px] flex-col items-center gap-[50px] text-center"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, amount: 0.2 }}
@@ -33,24 +33,7 @@ export function CtaSection() {
           </p>
         </div>
 
-        <Button
-          variant="primary"
-          size="lg"
-          className="
-            btn-pulse
-            !bg-black
-            !text-white
-            !px-10
-            !py-4
-            rounded-full
-            shadow-lg
-            hover:!bg-neutral-900
-            transition-all
-            duration-300
-          "
-        >
-          Try WorkHub Free →
-        </Button>
+       
       </motion.div>
     </section>
   )

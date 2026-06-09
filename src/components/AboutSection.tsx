@@ -9,9 +9,9 @@ WorkHub includes only the essential tools a company needs, such as task manageme
 
 export function AboutSection() {
   return (
-    <section className="bg-white px-6 py-24 lg:px-[130px] lg:py-32">
-      <AnimateIn className="mx-auto flex max-w-[1181px] flex-col items-center gap-[54px] text-center">
-        <p className="m-0 max-w-[1181px] whitespace-pre-line text-xl italic leading-relaxed text-black">
+    <section className="bg-white px-6 py-12 lg:px-[130px] lg:py-16">
+      <AnimateIn className="mx-auto flex max-w-full lg:max-w-[1181px] flex-col items-center gap-[54px] text-center">
+        <p className="m-0 max-w-full lg:max-w-[1181px] whitespace-pre-line text-xl italic leading-relaxed text-black">
           {ABOUT_TEXT}
         </p>
 

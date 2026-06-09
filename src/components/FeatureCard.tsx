@@ -9,7 +9,7 @@ export function FeatureCard({ title, description }: FeatureCardProps) {
       <img
         src="/images/feature-card-566f86.png"
         alt=""
-        className="h-[178px] w-full rounded-2xl object-cover shadow-feature-card"
+        className="h-[140px] lg:h-[178px] w-full rounded-2xl object-cover shadow-feature-card"
         width={323}
         height={178}
       />

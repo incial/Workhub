@@ -1,28 +1,38 @@
 import { motion } from 'framer-motion'
+import image3 from '../assets/image 3.png'
 
-export function MoreFromIncialSection() {
-  const Card = () => (
-    <div className="relative w-full max-w-[503px] overflow-hidden rounded-[10px]">
-      <div className="relative h-[279px] w-full overflow-hidden">
+function Card() {
+  return (
+    <div className="relative w-full max-w-full lg:max-w-[503px] overflow-hidden rounded-[20px] bg-[#624B5D] shadow-feature-card">
+      <div className="relative h-[200px] lg:h-[279px] w-full overflow-hidden">
         <img
-          src="/images/stockflow.png"
+          src={image3}
           alt="StockFlow product preview"
-          className="absolute left-[12%] top-[-7%] h-[134%] w-[94%] max-w-none object-cover shadow-feature-card"
+          className="h-full w-full object-cover"
         />
-        <div className="relative z-10 px-9 pt-10">
+
+        <div className="absolute inset-0 bg-black/30" />
+
+        <div className="absolute bottom-6 left-6 z-10">
           <p className="m-0 text-2xl font-semibold text-white">StockFlow</p>
-          <p className="mt-4 text-base text-white">by Incial</p>
+          <p className="mt-2 text-base text-white">by Incial</p>
         </div>
       </div>
     </div>
   )
+}
+
+export function MoreFromIncialSection() {
 
   const contentVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 1.2, ease: [0.2, 0.8, 0.2, 1] },
+      transition: {
+        duration: 1.2,
+        ease: [0.2, 0.8, 0.2, 1],
+      },
     },
   }
 
@@ -44,14 +54,14 @@ export function MoreFromIncialSection() {
       id="more-from-encial"
       className="bg-white px-6 py-20 lg:px-[141px] lg:py-28"
     >
-      <div className="mx-auto grid max-w-[1158px] gap-12 lg:grid-cols-[905px_1fr] lg:items-start lg:gap-16">
+      <div className="mx-auto grid max-w-full lg:max-w-[1158px] gap-12 lg:grid-cols-[905px_1fr] lg:items-start lg:gap-16">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.2 }}
           variants={contentVariants}
         >
-          <div className="flex max-w-[905px] flex-col gap-5">
+          <div className="flex w-full lg:max-w-[905px] flex-col gap-5">
             <h2 className="m-0 text-[48px] font-bold leading-[60px] text-black">
               More From Incial
             </h2>
@@ -63,7 +73,13 @@ export function MoreFromIncialSection() {
               simplicity and efficiency to help companies thrive.
             </p>
 
-            <motion.div className="mt-6" initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} variants={cardVariants}>
+            <motion.div
+              className="mt-6"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.2 }}
+              variants={cardVariants}
+            >
               <Card />
             </motion.div>
           </div>
