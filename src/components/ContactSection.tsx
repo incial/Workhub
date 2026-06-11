@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import emailjs from '@emailjs/browser'
 import { motion } from 'framer-motion'
 import { CheckCircleIcon } from './icons'
 
@@ -34,21 +35,32 @@ export function ContactSection() {
   setLoading(true)
 
   try {
-    // Temporary success until EmailJS is configured
-    setSuccess(true)
+    await emailjs.send(
+      'service_0056',
+      'template_hehnkfl', // template id nu confirm pannu
+      {
+        name,
+        email,
+        company,
+        subject,
+        message,
+      },
+      '7xbEiMWsZo3hNm_PY'
+    )
 
+    setSuccess(true)
     setName('')
     setEmail('')
     setCompany('')
     setSubject('')
     setMessage('')
-  } catch {
+  } catch (err) {
+    console.error(err)
     setError('Unable to send your message. Please try again later.')
   } finally {
     setLoading(false)
   }
 }
-
   return (
     <section id="contact-section" className="bg-white px-6 py-20 lg:px-36 lg:py-28 overflow-hidden">
       <div className="mx-auto max-w-full lg:max-w-6xl">
