@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
-import emailjs from '@emailjs/browser'
 import { motion } from 'framer-motion'
-import { Button } from './Button'
 import { CheckCircleIcon } from './icons'
 
 const variants = {
@@ -24,41 +22,32 @@ export function ContactSection() {
   const [error, setError] = useState<string | null>(null)
 
   
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault()
-    setError(null)
+ async function handleSubmit(e: React.FormEvent) {
+  e.preventDefault()
+  setError(null)
 
-    if (!name.trim() || !email.trim() || !subject.trim() || !message.trim()) {
-      setError('Please fill in the required fields.')
-      return
-    }
-
-    setLoading(true)
-
-    try {
-      const payload = { name, email, company, subject, message }
-      const res = await fetch(FORM_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      })
-
-      if (res.ok) {
-        setSuccess(true)
-        setName('')
-        setEmail('')
-        setCompany('')
-        setSubject('')
-        setMessage('')
-      } else {
-        setError('Unable to send your message. Please try again later.')
-      }
-    } catch (err) {
-      setError('Unable to send your message. Please try again later.')
-    } finally {
-      setLoading(false)
-    }
+  if (!name.trim() || !email.trim() || !subject.trim() || !message.trim()) {
+    setError('Please fill in the required fields.')
+    return
   }
+
+  setLoading(true)
+
+  try {
+    // Temporary success until EmailJS is configured
+    setSuccess(true)
+
+    setName('')
+    setEmail('')
+    setCompany('')
+    setSubject('')
+    setMessage('')
+  } catch {
+    setError('Unable to send your message. Please try again later.')
+  } finally {
+    setLoading(false)
+  }
+}
 
   return (
     <section id="contact-section" className="bg-white px-6 py-20 lg:px-36 lg:py-28 overflow-hidden">
