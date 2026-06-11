@@ -24,53 +24,42 @@ export function ContactSection() {
   const [error, setError] = useState<string | null>(null)
 
   
- async function handleSubmit(e: React.FormEvent) {
-  e.preventDefault()
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    setError(null)
 
-  setError(null)
-  setSuccess(false)
+    if (!name.trim() || !email.trim() || !subject.trim() || !message.trim()) {
+      setError('Please fill in the required fields.')
+      return
+    }
 
-  if (
-    !name.trim() ||
-    !email.trim() ||
-    !company.trim() ||
-    !subject.trim() ||
-    !message.trim()
-  ) {
-    setError('Please fill in all required fields.')
-    return
+    setLoading(true)
+
+    try {
+      const payload = { name, email, company, subject, message }
+      const res = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+
+      if (res.ok) {
+        setSuccess(true)
+        setName('')
+        setEmail('')
+        setCompany('')
+        setSubject('')
+        setMessage('')
+      } else {
+        setError('Unable to send your message. Please try again later.')
+      }
+    } catch (err) {
+      setError('Unable to send your message. Please try again later.')
+    } finally {
+      setLoading(false)
+    }
   }
 
-  setLoading(true)
-
-  try {
-    await emailjs.send(
-      'service_0056',
-      'template_hehnkfl',
-      {
-        name,
-        email,
-        company,
-        subject,
-        message,
-      },
-      '7xbEiMWsZo3hNm_PY'
-    )
-
-    setSuccess(true)
-
-    setName('')
-    setEmail('')
-    setCompany('')
-    setSubject('')
-    setMessage('')
-  } catch (err) {
-    console.error(err)
-    setError('Failed to send message. Please try again.')
-  } finally {
-    setLoading(false)
-  }
-}
   return (
     <section id="contact-section" className="bg-white px-6 py-20 lg:px-36 lg:py-28 overflow-hidden">
       <div className="mx-auto max-w-full lg:max-w-6xl">
@@ -166,10 +155,27 @@ export function ContactSection() {
               {error && <div className="text-sm text-red-600">{error}</div>}
 
               <div className="pt-2">
-                <Button type="submit" variant="primary" size="lg" onClick={undefined} className="w-full justify-center">
-                  {loading ? 'Sending...' : 'Send Message'}
-                </Button>
-              </div>
+  <button
+    type="submit"
+    disabled={loading}
+    className="
+      w-full
+      rounded-full
+      bg-black
+      py-4
+      text-lg
+      font-medium
+      text-white
+      transition-all
+      duration-300
+      hover:bg-neutral-800
+      disabled:opacity-50
+      disabled:cursor-not-allowed
+    "
+  >
+    {loading ? 'Sending...' : 'Send Message'}
+  </button>
+</div>
             </form>
           </motion.div>
 

@@ -2,36 +2,63 @@ import { AnimateIn } from './AnimateIn'
 import { FeatureCard } from './FeatureCard'
 import { SectionLabel } from './SectionLabel'
 
+import img1 from '../assets/img1.jpeg'
+import img2 from '../assets/img2.jpeg'
+import img3 from '../assets/img3.jpeg'
+import img4 from '../assets/img4.jpeg'
+import img5 from '../assets/img5.jpeg'
+import img6 from '../assets/img6.jpeg'
+import img7 from '../assets/img7.jpeg'
+import img8 from '../assets/img8.jpeg'
+
 const FEATURES = [
   {
     title: 'Unified Dashboard',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      'Manage all business activities from a single centralized dashboard.',
+    image: img1,
   },
   {
     title: 'Task Scheduling',
     description:
-      'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      'Create, assign, and monitor tasks efficiently across teams.',
+    image: img2,
   },
   {
     title: 'Team Management',
     description:
-      'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      'Track team performance and improve collaboration effortlessly.',
+    image: img3,
   },
   {
     title: 'Integrated Communication',
     description:
-      'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.',
+      'Communicate instantly with your team from one platform.',
+    image: img4,
   },
   {
     title: 'Analytics & Insights',
     description:
-      'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+      'Get powerful business insights through real-time analytics.',
+    image: img5,
   },
   {
     title: 'Document Management',
     description:
-      'Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt.',
+      'Store, organize, and access company documents securely.',
+    image: img6,
+  },
+  {
+    title: 'Custom Workflows',
+    description:
+      'Build workflows tailored specifically for your organization.',
+    image: img7,
+  },
+  {
+    title: 'CRM Management',
+    description:
+      'Manage customers, leads, and sales pipelines efficiently.',
+    image: img8,
   },
 ]
 
@@ -39,10 +66,13 @@ function FeatureMarquee({ items }: { items: typeof FEATURES }) {
   const loop = [...items, ...items]
 
   return (
-    <div className="feature-marquee-single overflow-hidden" aria-hidden={false}>
+    <div className="feature-marquee-single overflow-hidden">
       <div className="feature-marquee-inner flex gap-[50px]">
         {loop.map((feature, i) => (
-          <FeatureCard key={`${feature.title}-${i}`} {...feature} />
+          <FeatureCard
+            key={`${feature.title}-${i}`}
+            {...feature}
+          />
         ))}
       </div>
     </div>
@@ -60,12 +90,12 @@ export function FeaturesSection() {
           <SectionLabel>Features</SectionLabel>
 
           <h2 className="m-0 text-[48px] font-bold leading-[72px] text-black">
-            Everything You Need
+            Everything Your Team Needs
           </h2>
 
           <p className="m-0 max-w-full lg:max-w-[672px] text-xl italic leading-[30px] text-workhub-muted">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore
+            Powerful tools designed to simplify operations, improve
+            productivity, and help your business grow.
           </p>
         </AnimateIn>
       </div>

@@ -148,7 +148,7 @@ export function Hero() {
     }
   }}
 >
-  Try it Out
+  Book a Free Demo
 </Button>
               <Button
                 variant="outline"

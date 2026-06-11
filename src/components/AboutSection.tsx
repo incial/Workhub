@@ -1,11 +1,8 @@
 import { Button } from './Button'
 import { AnimateIn } from './AnimateIn'
 
-const ABOUT_TEXT = `WorkHub is not a regular enterprise management software or CRM. It is designed to remove complexity and keep only what truly matters for a company to operate smoothly.
-
-There are no unnecessary features, no confusing workflows, and no heavy enterprise clutter.
-
-WorkHub includes only the essential tools a company needs, such as task management, a clean CRM, team visibility, and clear reporting.`
+const ABOUT_TEXT = `WorkHub is the all-in-one workplace management software that brings your tasks, team, communication, and workflows into a single, centralized dashboard — powered by AI.
+No more juggling multiple tools. No more missed deadlines. No more scattered information.`
 
 export function AboutSection() {
   return (

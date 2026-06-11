@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { HamburgerIcon } from './icons'
+import logo2 from '../assets/logo2.svg'
 
 type HeaderProps = {
   variant?: 'light' | 'dark'
@@ -20,12 +21,24 @@ export function Header({ variant = 'light' }: HeaderProps) {
   return (
     <header className="relative mx-auto flex w-full max-w-full lg:max-w-[1345px] items-center justify-between px-6 pt-[37px] lg:px-12">
 
-      {/* Logo */}
-      <p className={`m-0 text-2xl font-bold leading-none ${textColor}`}>
-        <span className="font-semibold">WorkHub</span>{' '}
-        <span className="text-base font-medium">by incial</span>
-      </p>
+    {/* Logo */}
+<div className="flex items-center gap-3">
+  <img
+    src={logo2}
+    alt="WorkHub Logo"
+    className="h-10 w-auto lg:h-12"
+  />
 
+  <div className={`leading-tight ${textColor}`}>
+    <div className="text-xl font-bold lg:text-2xl">
+      WorkHub
+    </div>
+
+    <div className="text-xs lg:text-sm font-medium">
+      by incial
+    </div>
+  </div>
+</div>
       {/* Menu */}
       <div className="relative">
         <button
